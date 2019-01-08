@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<style>
+			body{
+				background: url(img/wximg.jpg) no-repeat;
+				background-size: 120%;
+			}
+			#text{
+				width: 300px;
+				height: 300px;
+				font-size: 56px;
+				text-align: center;
+				background-color: rgba(255,255,255,0.2);
+				border: 1px solid #cccccc;
+			}
+			.control{
+				margin-top: 10px;
+				text-align: center;
+			}
+			.lottery{
+				width: 300px;
+				height:300px;
+				margin: 0 auto;		
+				padding: 100px 0;		
+			}
+			.control input{
+				border: none;
+				background: #699ADC;
+				color: #fff;				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="lottery">
+			<input type="text" id="text" value="抽奖"/>
+			<div class="control">
+				<input id="start" type="button" value="开始"/>
+				<input id="end" type="button" value="停止" />
+			</div>
+		</div>
+	
+		<script>
+			var arr = ['沈巍','傅红雪','居老师','面面','夜尊','小公爷','花无谢',
+			'吴邪','井然','罗浮生','冯豆子','迟瑞']
+			var ostart = document.getElementById('start');
+			var oend = document.getElementById('end');
+			var timer;
+			var gift;
+			ostart.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					gift = Math.floor(Math.random()*12);
+//					text.innerHTML = arr[gift];
+					document.getElementById('text').value = arr[gift];
+					//arr.splice(gift,1);
+				},100)
+
+			};
+			oend.onclick = function(){
+				clearInterval(timer);
+				var msg = document.getElementById('text').value
+				if(msg=='抽奖'){
+					document.getElementById('text').value = '干哈呢'
+				}else{
+					document.getElementById('text').value = '清购物车大奖'
+				}
+				
+//				arr.splice(gift,1);
+//				console.log(arr)
+			}
+		</script>
+	</body>
+</html>
